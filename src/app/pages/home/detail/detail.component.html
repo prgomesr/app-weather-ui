@@ -1,0 +1,59 @@
+<div class="grid justify-content-center">
+  <div class="lg:col-6 md:col-8 sm:col-12">
+    <p-card *ngIf="loading">
+      <p-skeleton styleClass="mb-2"/>
+      <p-skeleton width="10rem" styleClass="mb-2"/>
+      <p-skeleton width="5rem" styleClass="mb-2"/>
+      <p-skeleton height="2rem" styleClass="mb-2"/>
+      <p-skeleton width="10rem" height="4rem"/>
+    </p-card>
+
+    <p-card *ngIf="forecast">
+      <div class="w-full text-center">
+        <h2>{{ forecast.city.name }}, {{ forecast.city.country }}</h2>
+        <img src="https://openweathermap.org/img/wn/{{forecast.list[0].weather[0].icon}}@2x.png" alt="Weather Icon"
+             class="weather-icon">
+        <h3>{{ forecast.list[0].main.temp | temperature }}</h3>
+        <p>{{ forecast.list[0].weather[0].description }}</p>
+      </div>
+      <div class="grid justify-content-center mt-4">
+        <div class="col-3 text-center">
+          <i class="fas fa-thermometer-half"></i>
+          <p>Sensação: {{ forecast.list[0].main.feels_like | temperature }}</p>
+        </div>
+        <div class="col-3 text-center">
+          <i class="fas fa-temperature-low"></i>
+          <p>Mínima: {{ forecast.list[0].main.temp_min | temperature }}</p>
+        </div>
+        <div class="col-3 text-center">
+          <i class="fas fa-temperature-high"></i>
+          <p>Máxima: {{ forecast.list[0].main.temp_max | temperature }}</p>
+        </div>
+        <div class="col-3 text-center">
+          <i class="fas fa-droplet"></i>
+          <p>Umidade: {{ forecast.list[0].main.humidity }}%</p>
+        </div>
+      </div>
+      <div class="grid justify-content-center mt-4">
+        <div class="w-full text-center">
+          <h4>Próximos 5 Dias</h4>
+          <p-divider></p-divider>
+        </div>
+      </div>
+      <div class="grid justify-content-center mt-4">
+        <div class="col-2 align-content-center text-center" *ngFor="let day of nextFiveDays">
+          <img src="https://openweathermap.org/img/wn/{{day.weather[0].icon}}@2x.png" alt="Weather Icon"
+               class="w-8">
+          <p>{{ day.dt | dayOfWeek }}</p>
+          <p>{{ day.main.temp | temperature }}</p>
+        </div>
+      </div>
+      <div class="grid justify-content-center mt-4">
+        <div class="w-full text-center">
+          <p-divider></p-divider>
+          <p-button label="Voltar" icon="pi pi-arrow-left" routerLink="/" class="w-full"/>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
