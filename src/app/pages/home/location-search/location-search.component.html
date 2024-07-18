@@ -1,0 +1,10 @@
+<p-autoComplete
+  [(ngModel)]="selectedItem"
+  [suggestions]="suggestions"
+  (completeMethod)="search($event)" field="name" (onSelect)="onCitySelected($event)" placeholder="Ex: Mirassol">
+  <ng-template let-city pTemplate="item">
+    <div class="flex align-items-center gap-2">
+      <div>{{ city.name + '/' + city.state }}</div>
+    </div>
+  </ng-template>
+</p-autoComplete>
