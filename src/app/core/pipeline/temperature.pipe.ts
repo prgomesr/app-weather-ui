@@ -8,7 +8,7 @@ export class TemperaturePipe implements PipeTransform {
 
   transform(value: number): string {
     const roundedValue = Math.round(value);
-    return `${roundedValue} ºC`;
+    return `${roundedValue}º`;
   }
 
 }

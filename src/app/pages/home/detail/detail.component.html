@@ -46,6 +46,9 @@
                class="w-8">
           <p>{{ day.dt | dayOfWeek }}</p>
           <p>{{ day.main.temp | temperature }}</p>
+          <p><i class="fas fa-temperature-low"></i> {{ day.main.temp_min | temperature }}</p>
+          <p><i class="fas fa-temperature-high"></i> {{ day.main.temp_max | temperature }}</p>
+          <p><i class="fas fa-droplet"></i> {{ day.main.humidity }}%</p>
         </div>
       </div>
       <div class="grid justify-content-center mt-4">
