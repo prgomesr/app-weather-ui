@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as moment from 'moment-timezone';
+import * as moment from 'moment';
 import 'moment/locale/pt-br';
 
 @Pipe({
@@ -8,9 +8,8 @@ import 'moment/locale/pt-br';
 })
 export class DayOfWeekPipe implements PipeTransform {
 
-
-  transform(value: number): string {
-    return moment.unix(value).tz('America/Sao_Paulo').locale('pt-br').format('ddd');
+  transform(value: string): string {
+    return moment.utc(value).locale('pt-br').format('ddd');
   }
 
 }

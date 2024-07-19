@@ -16,7 +16,7 @@ export interface WeatherLocation {
   visibility: number
   wind: Wind
   clouds: Clouds
-  dt: number
+  dt: string
   sys: Sys
   timezone: number
   id: number
@@ -83,7 +83,7 @@ export interface City {
 }
 
 export interface ForecastList {
-  dt: number
+  dt: string
   main: Main
   weather: Weather[]
   clouds: Clouds
