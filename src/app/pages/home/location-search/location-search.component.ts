@@ -26,12 +26,14 @@ export class LocationSearchComponent {
   }
 
   search(event: AutoCompleteCompleteEvent) {
-    this.weatherService.findAllLocationsByName(event.query)
-      .pipe(
-        take(1)
-      ).subscribe(value => {
-      this.suggestions = value;
-    })
+    if (event.query && event.query.length > 2) {
+      this.weatherService.findAllLocationsByName(event.query)
+        .pipe(
+          take(1)
+        ).subscribe(value => {
+        this.suggestions = value;
+      })
+    }
   }
 
   onCitySelected(event: AutoCompleteSelectEvent) {
