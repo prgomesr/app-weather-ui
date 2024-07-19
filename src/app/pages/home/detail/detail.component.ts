@@ -10,7 +10,6 @@ import {DataViewModule} from "primeng/dataview";
 import {CardModule} from "primeng/card";
 import {DividerModule} from "primeng/divider";
 import {DayOfWeekPipe} from "../../../core/pipeline/day-of-week.pipe";
-import moment from "moment";
 import {SkeletonModule} from "primeng/skeleton";
 
 @Component({
@@ -61,11 +60,9 @@ export class DetailComponent {
   }
 
   private static getNextFiveDays(forecast: Forecast) {
-    return forecast.list.filter((item: any) => {
-      const today = moment().startOf('day');
-      const forecastDay = moment.unix(item.dt).startOf('day');
-      return !today.isSame(forecastDay);
-    });
+    let list = forecast.list.slice();
+    list.shift();
+    return list;
   }
 
 }
