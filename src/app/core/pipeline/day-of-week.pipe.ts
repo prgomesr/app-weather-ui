@@ -10,6 +10,7 @@ export class DayOfWeekPipe implements PipeTransform {
 
 
   transform(value: number): string {
+    console.log(value);
     return moment.unix(value).tz('America/Sao_Paulo').locale('pt-br').format('ddd');
   }
 
